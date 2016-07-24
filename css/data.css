@@ -1,0 +1,22 @@
+
+.row1{
+	display:flex;
+	flex-wrap: wrap;
+	
+}
+
+.search{
+	width: 100%;
+}
+
+ul{
+	list-style: none;
+}
+#map {
+  	flex: 1;
+  	left: 362px;
+    height: 100%;
+    width: 70%;
+    right: 0px;
+  	position: absolute;
+}
