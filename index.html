@@ -15,16 +15,16 @@
 			Search
 		</span>
 		<div class= "row2">
-			<input type="text" class="search">
+			<input type="text" class="search" data-bind="textinput:queryThePlaces">
 		</div>
 		
 	</div>
 	</form>
 	<div class = "row1">
 		<div>
-			<ul data-bind="foreach: placeArray">
+			<ul data-bind="foreach: query">
 				<li>
-					<span data-bind="text: name, click: displayInfoWindow"></span>
+					<span data-bind="text: name, click: $parent.displayInfoWindow"></span>
 					<hr width="100%">
 				</li>
 			</ul>

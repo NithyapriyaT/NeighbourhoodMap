@@ -12,12 +12,20 @@ var marker;
 var markers=[];
 var largeInfowindow;
 var placeArrayLength = placeArray.length;
-//viewmodel
+var locationList;
+var stringStartsWith = function (string, startsWith) { 
+console.log("hai");        
+        string = string || "";
+        if (startsWith.length > string.length)
+            return false;
+        return string.substring(0, startsWith.length) === startsWith;
+    };
+
 var viewModel = function(){
-	var self = this;
-	self.placeList = ko.observable(placeArray);
 //Added a function for the click databind to display the infowindow on clicking the list
-	displayInfoWindow = function(place){
+	this.locationList = ko.observable(placeArray);
+
+	this.displayInfoWindow = function(place){
 		for(var i=0; i<placeArrayLength; i++){
 			if(place.name === placeArray[i].name){
 				var markerNewRef = markers[i];
@@ -25,7 +33,21 @@ var viewModel = function(){
 				populateInfoWindow(markerNewRef, largeInfowindow);
 			}
 		}
-	}
+	};
+
+	this.queryThePlaces = ko.observable('');
+
+	this.query = ko.computed(function(){
+		var queryThePlaces = this.queryThePlaces().toLowerCase();
+		if(!queryThePlaces) {
+			return this.locationList();
+		}
+		else {
+			return ko.utils.arrayFilter(this.locationList(), function(list) {
+            	return stringStartsWith(list.name.toLowerCase(), queryThePlaces);	
+        	});
+		}	
+	},this);
 };
 ko.applyBindings(new viewModel());	
 
@@ -39,6 +61,7 @@ function initMap() {
           zoom: 15
         }); 
         for(i=0;i<placeArrayLength; i++){
+        	//console.log("inside marker")
 	        marker = new google.maps.Marker({
 	            map: map,
 	            position: placeArray[i].location,
