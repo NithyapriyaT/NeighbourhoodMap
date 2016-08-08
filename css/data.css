@@ -1,22 +1,23 @@
 
 .row1{
-	display:flex;
-	flex-wrap: wrap;
-	
+  max-width:100%;
 }
-
 .search{
 	width: 100%;
 }
-
-ul{
-	list-style: none;
+.row2{
+  width:100%;
+  display:flex;
+  flex-wrap: wrap;  
 }
-#map {
-  	flex: 1;
-  	left: 362px;
+ul{ 
+  padding-left: 0px;
+	list-style: none; 
+  width: 18%;
+}
+#map {   
+  	left: 20%;
     height: 100%;
-    width: 70%;
-    right: 0px;
+    right: 1%;
   	position: absolute;
 }
