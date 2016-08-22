@@ -15,9 +15,12 @@ ul{
 	list-style: none; 
   width: 18%;
 }
+li {
+  cursor: pointer;
+}
 #map {   
-  	left: 20%;
-    height: 100%;
-    right: 1%;
-  	position: absolute;
+	left: 20%;
+  height: 100%;
+  right: 1%;
+	position: absolute;
 }
