@@ -69,13 +69,13 @@ function toggleMarker(marker) {
 }
 //This function is to create an infowindow for every marker.
 function populateInfoWindow(marker, infowindow) {
-	var streetUrl = 'http://maps.googleapis.com/maps/api/streetview?size=200x100&location=' + marker.address +'';
+	var streetUrl = 'https://maps.googleapis.com/maps/api/streetview?size=200x100&location=' + marker.address +'';
 	//Used an ajax function to call wikipedia API to get the details about the location.
 	var wikiRequestTimeout = setTimeout(function(){
         infowindow.setContent("Failed to load wikipedia resources for" + '<div>' + marker.title + '</div>');
         infowindow.open(map,marker);
     },1000);
-	var wikipediaUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + '&format=json&callback=wikiCallback';
+	var wikipediaUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + '&format=json&callback=wikiCallback';
 	$.ajax({
 		url: wikipediaUrl,
 		dataType: "jsonp",
